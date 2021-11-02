@@ -3,7 +3,7 @@
     <n-layout position="absolute">
       <n-layout-header :inverted="inverted" bordered style="height: 6%">
         <div class="logoArea">
-          <img src="../../assets/logo.png" alt class="logo" />
+          <img src="../../assets/logo.png"  class="logo" />
           <!-- <span>管理系统</span> -->
         </div>
         <div class="logOut" @click="loginOut">退出</div>

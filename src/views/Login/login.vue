@@ -1,56 +1,53 @@
 <template>
   <div class="loginBackground">
-    <div class="loginArea">
-      <h2>系统登录</h2>
+    <LoginBackground>
+      <div class="loginArea">
+        <h2>系统登录</h2>
 
-      <n-form :model="account" ref="formRef" :rules="rules" :show-label="false">
-        <div class="account">
-          <n-form-item path="userAccount" label="">
-            <div class="icon">
-              <n-icon size="20" color="#9EA4AA">
-                <PersonOutline />
-              </n-icon>
-            </div>
-            <n-input
-              v-model:value="account.userAccount"
-              @keydown.enter.prevent
-              size="large"
-              placeholder="用户名"
-              style="text-align: left"
-            >
-            </n-input>
-          </n-form-item>
+        <n-form :model="account" ref="formRef" :rules="rules" :show-label="false">
+          <div class="account">
+            <n-form-item path="userAccount" label="">
+              <div class="icon">
+                <n-icon size="20" color="#9EA4AA">
+                  <PersonOutline />
+                </n-icon>
+              </div>
+              <n-input
+                v-model:value="account.userAccount"
+                @keydown.enter.prevent
+                size="large"
+                placeholder="用户名"
+                style="text-align: left"
+              ></n-input>
+            </n-form-item>
+          </div>
+
+          <div class="password">
+            <n-form-item path="password" label="">
+              <div class="icon">
+                <n-icon size="20" color="#9EA4AA">
+                  <LockClosedOutline />
+                </n-icon>
+              </div>
+              <n-input
+                v-model:value="account.password"
+                type="password"
+                show-password-on="click"
+                @keydown.enter.prevent
+                placeholder="密码"
+                size="large"
+                style="text-align: left"
+              />
+            </n-form-item>
+          </div>
+        </n-form>
+
+        <div class="loginBtn">
+          <n-button type="primary" style="width: 440px; height: 40px" @click="signIn">登 录</n-button>
         </div>
-
-        <div class="password">
-          <n-form-item path="password" label="">
-            <div class="icon">
-              <n-icon size="20" color="#9EA4AA">
-                <LockClosedOutline />
-              </n-icon>
-            </div>
-            <n-input
-              v-model:value="account.password"
-              type="password"
-              show-password-on="click"
-              @keydown.enter.prevent
-              placeholder="密码"
-              size="large"
-              style="text-align: left"
-            />
-          </n-form-item>
-        </div>
-      </n-form>
-
-      <div class="loginBtn">
-        <n-button
-          type="primary"
-          style="width: 440px; height: 40px"
-          @click="signIn"
-          >登 录</n-button
-        >
       </div>
-    </div>
+    </LoginBackground>
+>
   </div>
 </template>
 
@@ -58,6 +55,9 @@
 import { defineComponent, ref, reactive, computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+
+import LoginBackground from "./login-background.vue";
+
 import { PersonOutline, LockClosedOutline } from "@vicons/ionicons5";
 import {
   NInput,
@@ -69,6 +69,7 @@ import {
   NSpin,
   NIcon,
 } from "naive-ui";
+
 import { login } from "../../api";
 // 全局挂载提示
 window.$message = useMessage();
@@ -80,6 +81,7 @@ const account = ref({
   userAccount: "",
   password: "",
 });
+const aa = document.querySelector(".loginBackground");
 const formRef = ref();
 // 校验规则
 const rules = {
@@ -144,20 +146,20 @@ const signIn = () => {
   height: 260px;
   padding: 5px 30px;
   width: 500px;
-  margin: auto;
-  /* text-align: center; */
-  top: 50%;
-  transform: translateY(-70%);
+  /* margin: auto; */
+  /* top: 50%; */
+  /* transform: translateY(-70%); */
   border-radius: 5px;
   box-shadow: 0 0 20px #333;
   background-color: #fff;
   box-sizing: border-box;
+  opacity: 0.9;
 }
 
 .loginBackground {
   width: 100%;
   height: 100%;
-  background-color: rgb(131, 172, 211);
+  /* background-color: rgba(209, 209, 209, 0.5); */
 }
 h2 {
   text-align: center;
