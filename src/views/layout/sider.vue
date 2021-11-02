@@ -92,7 +92,7 @@ const remakeMenuOption = <T>(oldMenu: T, fatherPath?: string): any[] => {
     } 
     newMenu.push(option);
   });
-  return newMenu
+  return newMenu 
 };
 
 const menuOptions = remakeMenuOption(menu.children)
